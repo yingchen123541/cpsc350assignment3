@@ -31,6 +31,7 @@ class GenStack
     bool isFull();
     bool isEmpty();
     char peek();
+    string StackEmptyException();
     //size is an actual keyword
     int mSize; //max size of my stack
     int top; // variable to keep track of indices representing the top of myStack
