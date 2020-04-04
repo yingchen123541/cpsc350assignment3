@@ -12,7 +12,8 @@ purpose: open a file and see whether all the delimiters are matched up in that f
 references: https://www.geeksforgeeks.org/print-stack-elements-from-bottom-to-top/ print stack function
             https://www.techiedelight.com/stack-implementation-using-templates/ how to make a template class
             got help from Lucas Torti on pop method
+            exception handling from textbook
 
 errors: didn't do a template class
-        error handling doesn't work
-        get filename from user input instead of from command line argument 
+        error handling doesn't work, when I include the StackException class in my main program, it doesn't compile so i didn't include it 
+        get filename from user input instead of from command line argument
