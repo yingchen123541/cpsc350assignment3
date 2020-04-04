@@ -31,9 +31,12 @@ int main() {
   string Line;
   double totalLine=0;
   string a;
-  GenStack *Stack1 = new GenStack(10);
-  GenStack *Stack2 = new GenStack(10);
-  GenStack *Stack3 = new GenStack(10);
+  int stacksize1=10;
+  int stacksize2=10;
+  int stacksize3=10;
+  GenStack *Stack1 = new GenStack(stacksize1);
+  GenStack *Stack2 = new GenStack(stacksize2);
+  GenStack *Stack3 = new GenStack(stacksize3);
 
   ifstream InputFile;
   InputFile.open(inputfileName);
@@ -61,12 +64,24 @@ int main() {
           //put ( [ { in different stacks to pop
           if(a=="("){
             Stack1->push('(');
+            if (Stack1->isFull()){
+              //make the stack side double to have more room when stack is full
+              stacksize1=stacksize1*2;
+            }//end if
           }//end if
           else if(a=="["){
             Stack2->push('[');
+            if(Stack2->isFull()){
+              //make the stack side double to have more room when stack is full
+              stacksize2=stacksize2*2;
+            }//end if
           }//end else if
           else if(a=="{"){
             Stack3->push('{');
+            if(Stack3->isFull()){
+              //make the stack side double to have more room when stack is full
+              stacksize3=stacksize3*2;
+            }//end if
           }//end else if
           //check whether Stack1 is empty before popping
           else if (a==")"){
@@ -100,9 +115,9 @@ int main() {
     }//end else if
       }//end for
     } // end while
-    if (Stack1->isEmpty()){
-      cout << "reach end of file, missing ')' in line " << totalLine << endl;
-    }
+    //if (Stack1->isEmpty()){
+      //cout << "reach end of file, missing ')' in line " << totalLine << endl;
+  //  }
     cout << "totalLine: " << totalLine << endl;
 
   }// end else if
