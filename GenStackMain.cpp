@@ -1,5 +1,3 @@
-
-
 #include "GenStack.cpp"
 #include<fstream>
 
@@ -65,21 +63,18 @@ int main() {
           if(a=="("){
             Stack1->push('(');
             if (Stack1->isFull()){
-              //make the stack side double to have more room when stack is full
               stacksize1=stacksize1*2;
             }//end if
           }//end if
           else if(a=="["){
             Stack2->push('[');
             if(Stack2->isFull()){
-              //make the stack side double to have more room when stack is full
               stacksize2=stacksize2*2;
             }//end if
           }//end else if
           else if(a=="{"){
             Stack3->push('{');
             if(Stack3->isFull()){
-              //make the stack side double to have more room when stack is full
               stacksize3=stacksize3*2;
             }//end if
           }//end else if
@@ -123,6 +118,7 @@ int main() {
   }// end else if
 
   string answer;
+  cout << "didn't find any error" << endl;
   cout << "do you want to open another file and process? enter 'yes' or 'no' " << endl;
   cin >> answer;
 
