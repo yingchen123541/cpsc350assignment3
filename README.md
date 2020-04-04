@@ -11,3 +11,4 @@ purpose: open a file and see whether all the delimiters are matched up in that f
 
 references: https://www.geeksforgeeks.org/print-stack-elements-from-bottom-to-top/ print stack function
             https://www.techiedelight.com/stack-implementation-using-templates/ how to make a template class
+            got help from Lucas Torti on pop method 
