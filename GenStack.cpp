@@ -1,5 +1,16 @@
 #include "GenStack.h"
-//need another main.cpp after this GenStack.cpp
+
+/** GenStack.cpp
+* Name: Yuki Chen
+* Student ID: 2320235
+* Email: yingchen@chapman.edu
+*
+* Assignment3  Syntax Checker
+* purpose: fill in constructors for array, make functions to use in main class
+* Version 3.0
+* Date: April 3rd, 2020
+*
+*/
 
 //default constructor
 GenStack::GenStack(){
@@ -15,36 +26,35 @@ GenStack::GenStack(int maxSize)
   mSize = maxSize;
   top = -1;
 }
-
+//destructor 
 GenStack::~GenStack()
 {
-  //try without [] if doesn't compile
    delete myArray;
 }
 
 //function
 void GenStack::push(char data)
 {
-  //check if full before inserting
-  //increment top and insert
+
+  //function to insert variables in stack
   myArray[++top] = data;
 }
 
 char GenStack::pop()
 {
-  //check if it's empty before proceeding to remove
+  //function to remove the last element in stack
   return myArray[top--];
 }
-
+//return the first element in stack
 char GenStack::peek(){
   return myArray[top];
 }
-
+//function to check whether the stack is full
 bool GenStack::isFull()
 {
   return (top == mSize-1);
 }
-
+//function to check whether the stack is empty
 bool GenStack::isEmpty()
 {
   return (top == -1);
