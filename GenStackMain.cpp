@@ -35,6 +35,9 @@ int main() {
   GenStack *Stack1 = new GenStack(stacksize1);
   GenStack *Stack2 = new GenStack(stacksize2);
   GenStack *Stack3 = new GenStack(stacksize3);
+  int opennumber1=0;
+  int opennumber2=0;
+  int opennumber3=0;
 
   ifstream InputFile;
   InputFile.open(inputfileName);
@@ -62,24 +65,28 @@ int main() {
           //put ( [ { in different stacks to pop
           if(a=="("){
             Stack1->push('(');
+            opennumber1=opennumber1+1;
             if (Stack1->isFull()){
               stacksize1=stacksize1*2;
             }//end if
           }//end if
           else if(a=="["){
             Stack2->push('[');
+            opennumber2=opennumber2+1;
             if(Stack2->isFull()){
               stacksize2=stacksize2*2;
             }//end if
           }//end else if
           else if(a=="{"){
             Stack3->push('{');
+            opennumber3=opennumber3+1;
             if(Stack3->isFull()){
               stacksize3=stacksize3*2;
             }//end if
           }//end else if
           //check whether Stack1 is empty before popping
           else if (a==")"){
+            opennumber1=opennumber1-1;
             if (!Stack1->isEmpty()){
               Stack1->pop();
           }// end check empty if
@@ -90,6 +97,7 @@ int main() {
         }//end else if
 
         else if (a=="]"){
+          opennumber2=opennumber2-1;
           if (!Stack2->isEmpty()){
             Stack2->pop();
         }// end check empty if
@@ -100,6 +108,7 @@ int main() {
       }//end else if
 
       else if (a=="}"){
+        opennumber3=opennumber3-1;
         if (!Stack3->isEmpty()){
           Stack3->pop();
       }// end check empty if
@@ -110,9 +119,18 @@ int main() {
     }//end else if
       }//end for
     } // end while
-    //if (Stack1->isEmpty()){
-      //cout << "reach end of file, missing ')' in line " << totalLine << endl;
-  //  }
+    if (opennumber1>0){
+      cout << "reach end of file, missing ')' in line " << totalLine << endl;
+      exit(1);
+    }else if (opennumber2>0){
+      cout << "reach end of file, missing ']' in line " << totalLine << endl;
+      exit(1);
+    }//end else if
+    else if(opennumber3>0){
+      cout << "reach end of file, missing '}' in line " << totalLine << endl;
+      exit(1);
+    }
+
     cout << "totalLine: " << totalLine << endl;
 
   }// end else if
