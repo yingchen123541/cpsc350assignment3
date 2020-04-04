@@ -21,6 +21,7 @@ using namespace std;
 int main() {
    bool fileOk=true;
    string inputfileName;
+   //get user input to open file
    cout << "enter a file name" << endl;
    cin >> inputfileName;
 
@@ -40,6 +41,7 @@ int main() {
   int opennumber3=0;
 
   ifstream InputFile;
+  //open input file
   InputFile.open(inputfileName);
   //if input file doesn't exist
   if(!InputFile)
@@ -64,29 +66,40 @@ int main() {
           cout << Line[z] << endl;
           //put ( [ { in different stacks to pop
           if(a=="("){
+            //add delimiters into stack
             Stack1->push('(');
+            // count the number of "("
             opennumber1=opennumber1+1;
             if (Stack1->isFull()){
+              //double the stack size when it's full
               stacksize1=stacksize1*2;
             }//end if
           }//end if
           else if(a=="["){
+            //add delimiters into stack
             Stack2->push('[');
+            // count the number of "["
             opennumber2=opennumber2+1;
             if(Stack2->isFull()){
+              //double the stack size when it's full
               stacksize2=stacksize2*2;
             }//end if
           }//end else if
           else if(a=="{"){
+            //add delimiters into stack
             Stack3->push('{');
+            // count the number of "{"
             opennumber3=opennumber3+1;
             if(Stack3->isFull()){
+              //double the stack size when it's full
               stacksize3=stacksize3*2;
             }//end if
           }//end else if
           //check whether Stack1 is empty before popping
           else if (a==")"){
+            // count the number of "(", when find a matching ")", take out "("
             opennumber1=opennumber1-1;
+            //check empty before pop
             if (!Stack1->isEmpty()){
               Stack1->pop();
           }// end check empty if
@@ -97,7 +110,9 @@ int main() {
         }//end else if
 
         else if (a=="]"){
+          // count the number of "[", when find a matching "]", take out "["
           opennumber2=opennumber2-1;
+          //check empty before pop
           if (!Stack2->isEmpty()){
             Stack2->pop();
         }// end check empty if
@@ -108,7 +123,9 @@ int main() {
       }//end else if
 
       else if (a=="}"){
+        // count the number of "{", when find a matching "}", take out "{"
         opennumber3=opennumber3-1;
+        //check empty before pop
         if (!Stack3->isEmpty()){
           Stack3->pop();
       }// end check empty if
@@ -119,13 +136,16 @@ int main() {
     }//end else if
       }//end for
     } // end while
+    //if there are extra "(" in stack1, closing ")" are missing
     if (opennumber1>0){
       cout << "reach end of file, missing ')' in line " << totalLine << endl;
       exit(1);
+      //if there are extra "[" in stack2, closing "]" are missing
     }else if (opennumber2>0){
       cout << "reach end of file, missing ']' in line " << totalLine << endl;
       exit(1);
     }//end else if
+    //if there are extra "{" in stack3, closing "}" are missing
     else if(opennumber3>0){
       cout << "reach end of file, missing '}' in line " << totalLine << endl;
       exit(1);
@@ -137,11 +157,13 @@ int main() {
 
   string answer;
   cout << "didn't find any error" << endl;
+  //prompt the user to open another file when can't find any error
   cout << "do you want to open another file and process? enter 'yes' or 'no' " << endl;
   cin >> answer;
 
   if (answer=="yes")
   {
+    //open another file to read from 
     cout << "enter your file name " << endl;
     cin >> inputfileName;
   }// end if
