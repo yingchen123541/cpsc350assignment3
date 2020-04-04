@@ -26,7 +26,7 @@ GenStack::GenStack(int maxSize)
   mSize = maxSize;
   top = -1;
 }
-//destructor 
+//destructor
 GenStack::~GenStack()
 {
    delete myArray;
@@ -58,4 +58,9 @@ bool GenStack::isFull()
 bool GenStack::isEmpty()
 {
   return (top == -1);
+}
+//function to throw an exception when pop from empty stack 
+string GenStack::StackEmptyException()
+{
+  return "empty stack, can't pop";
 }
