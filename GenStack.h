@@ -1,5 +1,18 @@
 #include <iostream>
 
+/** GenStack.h
+* Name: Yuki Chen
+* Student ID: 2320235
+* Email: yingchen@chapman.edu
+*
+* Assignment3  Syntax Checker
+* purpose: define constructors, array and functions
+* Version 3.0
+* Date: April 3rd, 2020
+*
+*/
+
+
 using namespace std;
 
 class GenStack
